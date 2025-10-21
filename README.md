@@ -1,88 +1,101 @@
-# 🧠 Machine Learning Experiments with MLflow
+#  Machine Learning Experiments with MLflow
 
-This repository contains hands-on projects demonstrating how to use **MLflow** for experiment tracking, model management, and model deployment across different machine learning workflows.
-Each project highlights how MLflow can be integrated into real-world ML pipelines — from training and evaluation to tracking, registration, and inference.
+This repository showcases practical **end-to-end machine learning experiments** using **MLflow** for experiment tracking, model management, and deployment.
+Each project demonstrates how MLflow integrates seamlessly into modern ML workflows — from model training and hyperparameter tuning to evaluation, registration, and inference.
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Install Dependencies
 
-Before running any project, make sure you have the required Python packages installed:
+Make sure you have Python and the required libraries installed before running any project.
+Refer to each project folder for a list of dependencies or install common packages such as `mlflow`, `scikit-learn`, and `pandas`.
 
-```bash
-pip install mlflow scikit-learn pandas
-```
+### 2. Launch the MLflow Tracking Server
 
-### 2. Start the MLflow Tracking Server
+You can start the MLflow UI locally to monitor experiments and model versions.
+By default, the UI runs at:
 
-Launch the MLflow UI locally to visualize experiments, runs, and models:
-
-```bash
-mlflow ui
-```
-
-By default, the MLflow UI will be available at:
-👉 **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
+**[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 
 ---
 
-## 📂 Projects Overview
+## Projects Overview
 
-### 🌸 **1. Iris Classification (Logistic Regression)**
+### **1. Iris Classification (Logistic Regression)**
 
-**Goal:** Train and track a Logistic Regression model to classify iris flowers based on sepal and petal dimensions.
+**Objective:**
+Classify iris flowers using sepal and petal dimensions through a Logistic Regression model.
 
-**Highlights:**
+**Key Highlights:**
 
 * Uses the classic **Iris dataset** from scikit-learn.
-* Logs parameters, metrics, and model artifacts to MLflow.
-* Demonstrates model registration and versioning using **MLflow Model Registry**.
-* Shows how to load and serve models using `mlflow.pyfunc`.
+* Tracks model parameters, metrics, and artifacts in MLflow.
+* Demonstrates model versioning and lifecycle management using the **MLflow Model Registry**.
+* Covers model loading and serving via the **PyFunc interface**.
 
-**Key Concepts Covered:**
+**Concepts Demonstrated:**
 
-* Experiment tracking (`mlflow.start_run`, `mlflow.log_param`, `mlflow.log_metric`)
-* Model logging and registration (`mlflow.sklearn.log_model`)
-* Serving validation and inference from registered models
+* Experiment tracking (`mlflow.start_run`, logging metrics and parameters)
+* Model registration and deployment
+* Run comparison and artifact visualization
 
 **Experiment Name:** `Iris-Classification`
-**Registered Model Name:** `tracking-quickstart`
+**Registered Model:** `tracking-quickstart`
 
 ---
 
-## 🧭 MLflow Components in Use
+### 🏠**2. House Price Prediction (Random Forest with Hyperparameter Tuning)**
 
-* **Tracking Server:** Logs metrics, parameters, and artifacts.
-* **Model Registry:** Manages model versions, stages (e.g., Staging/Production), and metadata.
-* **MLflow UI:** Provides visual tracking and comparison of runs.
-* **MLflow PyFunc Interface:** Loads models for batch or real-time inference.
+**Objective:**
+Predict house prices using the **California Housing dataset**, leveraging hyperparameter tuning and MLflow tracking.
+
+**Key Highlights:**
+
+* Implements **Random Forest Regressor** for price prediction.
+* Performs **hyperparameter tuning** using `GridSearchCV`.
+* Logs all hyperparameters, metrics, and model artifacts to **MLflow UI**.
+* Enables **comparison across multiple runs** to identify the best model configuration.
+* Registers the best-performing model in the **MLflow Model Registry** for version control and deployment.
+
+**Experiment Workflow:**
+
+1. Split the dataset into training and testing sets.
+2. Define a grid of hyperparameters for the Random Forest model.
+3. Execute multiple training runs with different parameter combinations.
+4. Log metrics like **Mean Squared Error (MSE)** for each run.
+5. Compare all runs in the MLflow UI and promote the best model.
+
+**Concepts Demonstrated:**
+
+* Hyperparameter tuning & experiment management
+* Automated logging of best parameters and performance metrics
+* Model registration and tracking for production readiness
+
+**Experiment Name:** `House-Price-Prediction`
+**Registered Model:** `Best-RandomForestRegressor-Model`
 
 ---
 
-## 📊 Viewing Your Runs
+## MLflow Components in Use
 
-Once the MLflow UI is running:
-
-1. Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
-2. Navigate to the **“Experiments”** section to view:
-
-   * Model parameters and metrics
-   * Training runs and comparisons
-   * Logged models and artifacts
-3. Use the **“Models”** tab to explore registered models, versions, and deployment stages.
-
+* **Tracking Server:** Records parameters, metrics, and artifacts for every run.
+* **Model Registry:** Organizes model versions, stages, and metadata.
+* **MLflow UI:** Provides a visual dashboard for comparing experiments.
+* **MLflow PyFunc Interface:** Enables loading models for inference in any environment.
 
 ---
 
-## 🧾 References
+## How to View Your Experiments
 
-* [MLflow Documentation](https://mlflow.org/docs/latest/index.html)
-* [Scikit-learn Documentation](https://scikit-learn.org/stable/)
-* [MLflow Model Registry Guide](https://mlflow.org/docs/latest/model-registry.html)
+1. Run the MLflow UI and open **[http://127.0.0.1:5000](http://127.0.0.1:5000)**.
+2. Navigate to the **Experiments** section to explore:
+
+   * Run metrics (accuracy, MSE, etc.)
+   * Parameter comparisons across runs
+   * Model artifacts and logs
+3. Switch to the **Models** tab to inspect registered models, their versions, and lifecycle stages (e.g., Staging or Production).
 
 ---
-
-
 
